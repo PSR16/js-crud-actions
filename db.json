@@ -29,14 +29,6 @@
       "description": "awesome",
       "color": "black",
       "id": "41b2a7f0-0f75-4da2-9b26-57918bc70421"
-    },
-    {
-      "name": "kayakING",
-      "price": "2342",
-      "quantity": "3",
-      "description": "kayaking",
-      "color": "blue",
-      "id": "c72b635e-274b-4d7e-af3f-985e6c5eb0bc"
     }
   ]
 }
