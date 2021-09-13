@@ -7,6 +7,20 @@
       "color": "orange",
       "id": "0124081a-4daa-425a-bb40-d5c016893fe3",
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nulla facilisi nullam vehicula ipsum a arcu cursus vitae congue. Risus quis varius quam quisque. Quis risus sed vulputate odio. Ultrices eros in cursus turpis. Est velit egestas dui id ornare arcu. Sem fringilla ut morbi tincidunt augue interdum velit euismod. Dictumst quisque sagittis purus sit amet volutpat. Sed libero enim sed faucibus turpis in eu. Dui vivamus arcu felis bibendum ut tristique et egestas."
+    },
+    {
+      "name": "Rugged hiking",
+      "price": 55.99,
+      "quantity": 25,
+      "description": "Great stuff",
+      "id": "12c5f589-eca0-44f3-adff-79be597852f2"
+    },
+    {
+      "name": "Rugged hiking",
+      "price": 55.99,
+      "quantity": 25,
+      "description": "Great stuff",
+      "id": "c55eb40d-3c7a-44fa-aa45-d09e173ae103"
     }
   ]
 }
