@@ -1,12 +1,18 @@
 document.getElementById("load").onclick = function() {
-    const req = new XMLHttpRequest();
-    req.open('GET', '/api/products');
-    req.onload = function() {
-        const data = JSON.parse(req.response);
-        addList({data});
-    }
+  const value = document.getElementById("product-id").value;
 
-    req.send(); //send to API
+  if (value === "") {
+    axios.get('/api/products').then(addList); //Promise-based
+  } else {
+    axios
+      .get(`/api/products/${value}`)
+      .then(addSingle)
+      .catch((err) => {
+        if (err.response.status === 404) {
+          notFound();
+        }
+      });
+  }
 };
 
 function addList({ data }) {

@@ -21,7 +21,12 @@ module.exports = function (db) {
   });
 
   router.get("/products/:id", (req, res) => {
-    res.send(db.get("products").find({id: req.params.id}).value());  //find object by id
+    const result = db.get("products").find({id: req.params.id}).value();  //find object by id
+    if (result) {
+      res.send(result);
+    } else {
+      res.status(404).send();
+    }
   });
 
   return router;
