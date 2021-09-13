@@ -1,6 +1,25 @@
 document.getElementById("submit").onclick = function (evt) {
   evt.preventDefault();   //handle form 
-  const formData = new FormData(document.querySelector("form"));
+
+  const form = document.querySelector("form");
+
+  const isValid = form.checkValidity();
+  
+  if(!isValid) {
+    var err = {
+      response: {
+        data: [{
+          field: "name",
+          message: "Name is required"
+        }]
+      }
+    }
+
+    handleErrors(err);
+    return;
+  }
+
+  const formData = new FormData(form);
 
   axios.post("/api/products", {
     name: formData.get("name"),
@@ -8,10 +27,27 @@ document.getElementById("submit").onclick = function (evt) {
     quantity: formData.get("quantity"),
     description: formData.get("description"),
     color: formData.get("color")
-  }).then(processResults);
+  })
+  .then(processResults)
+  .catch(handleErrors);
 }
 
 function processResults({ data }) {
   document.querySelector("form").reset();
   window.alert(`${data.name} added with id: ${data.id}`);
+}
+
+function handleErrors({response}) {
+  //clears errors 
+  const errorElements = document.getElementsByClassName("error");
+  for (let i = 0; i < errorElements.length; i++){
+    errorElements[i].textContent = "";
+  }
+
+  const errors = response.data;
+  for (let i = 0; i < errors.length; i++) {
+    const { field, message } = errors[i];
+    const element = document.getElementsByName(field)[0].nextElementSibling;
+    element.textContent = message;
+  }
 }
