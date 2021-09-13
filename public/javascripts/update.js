@@ -9,6 +9,26 @@ document.getElementById("load").onclick = function () {
   });
 };
 
+document.getElementById("submit").onclick = function(evt){
+  evt.preventDefault();
+  const formData = new FormData(document.querySelector("form"));
+
+  const newData = {
+    name: formData.get("name"),
+    price: formData.get("price"),
+    quantity: formData.get("quantity"),
+    description: formData.get("description"),
+    color: formData.get("color")
+  };
+
+  const updatedFields = _.omitBy(newData, function (v, k) {  //v is value of field, k is key (name)
+      return k === "id" || currentProduct[k] == v;
+  });
+
+  axios.patch(`/api/products/${currentProduct.id}`, updatedFields)
+    .then(processResults);   //using patch to update only a couple fields, not the entire object
+};
+
 function loadProduct(data) {
   document.getElementsByName("name")[0].value = data.name;
   document.getElementsByName("price")[0].value = data.price;
